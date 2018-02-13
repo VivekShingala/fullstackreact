@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Fullstackreact Tutorials Day 3</title>
+		<!-- Script tags including React -->
+		<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+		<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+		<script crossorigin src="https://unpkg.com/babel-standalone/babel.min.js"></script>
+	</head>
+	<body>
+		<div id="app"></div>
+		<script type="text/babel">
+			var app = <h1>Hello World</h1>;
+			var mountComponent = document.querySelector('#app');
+			ReactDOM.render(app, mountComponent);
+		</script>
+		<script type="text/babel">
+			class App extends React.Component{
+				render(){
+					return <h1>Hello from our react app</h1> 
+				}
+			}
+			var mount = document.querySelector('#app');
+			ReactDOM.render(<App/>,mount);
+		</script>
+	</body>
+</html>
