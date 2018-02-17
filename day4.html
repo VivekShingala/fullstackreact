@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Fullstackreact Tutorials Day 4</title>
+		<!-- Script tags including React -->
+		<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+		<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+		<script crossorigin src="https://unpkg.com/babel-standalone/babel.min.js"></script>
+		
+		<!-- css -->
+		<link href="timeline.css" rel="stylesheet" type="text/css" />
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div class="demo">
+			<div id="app"></div>
+		</div>
+		<script type="text/babel">
+			{/* Header */}
+			class Header extends React.Component{
+				render(){
+					return(
+						<div className="header">
+							<div className="fa fa-more"></div>
+							
+							<span className="title">Timeline</span>
+							
+							<input type="text" className="searchInput" placeholder="Search ..."/>
+							<div className="fa fa-search searchIcon"></div>
+						</div>
+					)
+				}
+			}
+			
+			{/* Content */}
+			class Content extends React.Component{
+				render(){
+					return(
+						<div className="content">
+							<div className="line"></div>
+							
+							{/* Timeline item */}
+							<div className="item">
+								<div className="avatar">
+									<img src="http://www.croop.cl/UI/twitter/images/doug.jpg" alt="Doug" /> 
+									Doug
+								</div>
+								<span className="time">An hour ago</span>
+								<p>Ate lunch</p>
+								<div className="commentCount">2</div>
+							</div>
+							{/*...*/}
+						</div>
+					)
+				}
+			}
+			
+			{/* container */}
+			class App extends React. Component{
+				render(){
+					return (
+						<div className="notificationsFrame">
+							<div className="panel">
+								{/* content goes here */}
+								<Header/>
+								<Content/>
+							</div>
+						</div>
+					)
+				}
+			}
+			
+			var mount = document.querySelector('#app');
+			ReactDOM.render(<App/>,mount);
+		</script>
+	</body>
+</html>
