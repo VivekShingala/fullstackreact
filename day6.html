@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Fullstackreact Tutorials Day 6</title>
+		<!-- Script tags including React -->
+		<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+		<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+		<script crossorigin src="https://unpkg.com/babel-standalone/babel.min.js"></script>
+	</head>
+	<body>
+		<div class="demo">
+			<div id="app"></div>
+		</div>
+		<script type="text/babel">
+			class Clock extends React.Component{
+				constructor(props){
+					super(props);
+					this.state = this.getTime();
+				}
+				
+				setTimer(){
+					clearTimeout(this.timeout);
+					this.timeout = setTimeout(this.updateClock.bind(this), 1000);
+				}
+				
+				updateClock(){
+					const currentTime = new Date();
+					this.setState({currentTime:currentTime},this.setTimer);
+				}
+				
+				getTime(){
+					const currentTime = new Date();
+					return {
+						hours: currentTime.getHours(),
+						minutes: currentTime.getMinutes(),
+						seconds: currentTime.getSeconds(),
+						ampm: currentTime.getHours() >= 12 ? 'pm' : 'am'
+					}
+				}
+				
+				render(){
+					const {hours, minutes, seconds, ampm} = this.state;
+					return(
+						<div className="clock">
+							{
+								hours == 0 ? 12 : (hours > 12) ? hours -12 : hours
+							}
+							:
+							{
+								minutes > 9 ? minutes : `0${minutes}`
+							}
+							:
+							{
+								seconds > 9 ? seconds : `0${seconds}`
+							} {ampm}
+						</div>
+					);
+				}
+			}
+			
+			{/* container */}
+			class App extends React. Component{
+				render(){
+					return (
+						<div className="notificationsFrame">
+							<div className="panel">
+								{/* content goes here */}
+								<Clock/>
+							</div>
+						</div>
+					)
+				}
+			}
+			
+			var mount = document.querySelector('#app');
+			ReactDOM.render(<App/>,mount);
+		</script>
+	</body>
+</html>
